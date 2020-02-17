@@ -100,7 +100,7 @@ def perform_mst(tran_corr_diff_price, file_path):
     nx.draw_networkx_edges(T, pos)
     plt.savefig(file_path)
     plt.close()
-    
+
 
 def plot_time_series(price_df, file_path):
     logger.info("Plotting time series graph...")
@@ -117,9 +117,9 @@ def plot_time_series(price_df, file_path):
 
 def plot_corr_heatmap(diff_price, file_path):
     logger.info("Plotting correlation graph...")
-    autocorrs = [diff_price["btc"].autocorr(lag=i) for i in range(60)]
-    print("max: {}, index: {}".format(np.max(autocorrs[1:]),
-                                      np.argmax(autocorrs[1:])))
+    # autocorrs = [diff_price["btc"].autocorr(lag=i) for i in range(60)]
+    # print("max: {}, index: {}".format(np.max(autocorrs[1:]),
+    #                                   np.argmax(autocorrs[1:])))
     plt.figure(figsize=(9, 7))
     sns.heatmap(diff_price.corr(), vmax=1, vmin=-1, center=0, annot=True)
     plt.savefig(file_path)
